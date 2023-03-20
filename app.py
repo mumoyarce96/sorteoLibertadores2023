@@ -48,14 +48,16 @@ df_bolilleros = pd.DataFrame(dict_bolilleros)
 st.table(df_bolilleros)
 st.caption('*Equipo clasificado desde la Fase Previa')
 
-def dataframe_sorteo(columnas):
+def dataframe_sorteo():
     listas = sorteoLibertadores2023.sortear_libertadores(1)
     col_names = ['id_sorteo','Grupo', 'Equipo', 'País', 'Bombo']
     df = pd.DataFrame(data = listas, columns = col_names)
     df = df.pivot(index ='Bombo', columns='Grupo', values='Equipo')
-    st.table(df[columnas])
+    return df
+    
 
 if st.button('Sortear grupos'):
     st.subheader('Grupos simulados')
-    dataframe_sorteo(['A', 'B', 'C', 'D'])
-    dataframe_sorteo(['E', 'F', 'G', 'H'])
+    df_sorteo = dataframe_sorteo()
+    st.table(df_sorteo[['A', 'B', 'C', 'D']])
+    st.table(df_sorteo[['E', 'F', 'G', 'H']])
