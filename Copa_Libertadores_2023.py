@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Mar 18 10:56:38 2023
+Created on Wed Mar 22 18:36:13 2023
 
 @author: Raimundo
 """
 
 import streamlit as st
-import sorteoLibertadores2023
+from sorteoLibertadores import simular, sorteo_a_dataframe
 import pandas as pd
 
 st.set_page_config(page_title = "Sorteo Copa Libertadores 2023")
@@ -48,16 +48,10 @@ df_bolilleros = pd.DataFrame(dict_bolilleros)
 st.table(df_bolilleros)
 st.caption('*Equipo clasificado desde la Fase Previa')
 
-def dataframe_sorteo():
-    listas = sorteoLibertadores2023.sortear_libertadores(1)
-    col_names = ['id_sorteo','Grupo', 'Equipo', 'País', 'Bombo']
-    df = pd.DataFrame(data = listas, columns = col_names)
-    df = df.pivot(index ='Bombo', columns='Grupo', values='Equipo')
-    return df
     
 
 if st.button('Sortear grupos'):
     st.subheader('Grupos simulados')
-    df_sorteo = dataframe_sorteo()
+    df_sorteo = sorteo_a_dataframe(simular({'Flamengo': 'A'}))
     st.table(df_sorteo[['A', 'B', 'C', 'D']])
     st.table(df_sorteo[['E', 'F', 'G', 'H']])
