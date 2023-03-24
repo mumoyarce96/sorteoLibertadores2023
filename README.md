@@ -1,3 +1,3 @@
 # sorteoLibertadores2023
-Simulación del sorteo de la Copa Libertadores 2023.
-[SIMULAR AQUÍ](https://mumoyarce96-sorteolibertadores2023-app-ab01bh.streamlit.app/)
+Simulación de los sorteos de la Copa Libertadores 2023 y de la Copa Sudamericana 2023.
+[SIMULAR AQUÍ](https://sorteosconmebol2023.streamlit.app/)
